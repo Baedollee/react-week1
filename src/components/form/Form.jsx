@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const Form = () => {
   return (
-    <Form>
+    <Form_>
       <InputWrap>
         <h2>제목</h2>
         <InputAdd type="text" />
@@ -11,11 +12,11 @@ const Form = () => {
       </InputWrap>
 
       <InputBtn>추가하기</InputBtn>
-    </Form>
+    </Form_>
   );
 };
 
-const Form = styled.form`
+const Form_ = styled.form`
   align-items: center;
   display: flex;
   gap: 20px;
