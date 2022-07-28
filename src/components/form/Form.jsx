@@ -1,22 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Form = () => {
+const Form = ({ todoList, setTodoList, inputForm, setInputForm }) => {
+  const handleTitle = (e) => {
+    setInputForm({ ...inputForm, title: e.target.value });
+  };
+  const handleContents = (e) => {
+    setInputForm({ ...inputForm, contents: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTodoList([
+      ...todoList,
+      { inputForm, id: todoList.length + 1, done: false },
+    ]);
+    setInputForm({ title: '', contents: '' });
+  };
   return (
-    <Form_>
+    <Head>
       <InputWrap>
         <h2>제목</h2>
-        <InputAdd type="text" />
+        <InputAdd type="text" value={inputForm.value} onChange={handleTitle} />
         <h2>내용</h2>
-        <InputAdd type="text" />
+        <InputAdd
+          type="text"
+          value={inputForm.contents}
+          onChange={handleContents}
+        />
       </InputWrap>
 
-      <InputBtn>추가하기</InputBtn>
-    </Form_>
+      <InputBtn onClick={handleSubmit}>추가하기</InputBtn>
+    </Head>
   );
 };
 
-const Form_ = styled.form`
+const Head = styled.form`
   align-items: center;
   display: flex;
   gap: 20px;

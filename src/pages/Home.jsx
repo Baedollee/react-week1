@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import Form from '../components/form/Form';
-import List from '../components/list/List';
+import Todo from '../components/todo/Todo';
+import Done from '../components/done/Done';
+import Head from '../components/head/Head';
 import { useState } from 'react';
 
 const Home = () => {
-  const [TodoList, setTodoList] = useState([
-    { title: '타이틀', contents: '콘텐츠', done: false },
-    { title: '타이틀', contents: '콘텐츠', done: true },
+  const [todoList, setTodoList] = useState([
+    { id: 0, title: '타이틀', contents: '콘텐츠', done: false },
+    { id: 1, title: '타이틀', contents: '콘텐츠', done: true },
   ]);
-  const [Inputform, setInputform] = useState({
+  const [inputForm, setInputForm] = useState({
     title: '',
     contents: '',
     done: false,
@@ -17,31 +19,18 @@ const Home = () => {
 
   return (
     <div>
-      <Container>
-        <div>홈</div>
-        <div>react</div>
-      </Container>
+      <Head />
       <Form
-        TodoList={TodoList}
-        Inputform={Inputform}
+        todoList={todoList}
+        inputForm={inputForm}
         setTodoList={setTodoList}
-        setInputform={setInputform}
+        setInputForm={setInputForm}
       />
 
       <InputTitle>working</InputTitle>
-      <List TodoList={TodoList} setTodoList={setTodoList} />
     </div>
   );
 };
-
-const Container = styled.div`
-  align-items: center;
-  border: 1px solid #ddd;
-  display: flex;
-  height: 50px;
-  justify-content: space-between;
-  padding: 0 20px;
-`;
 
 const InputTitle = styled.h2`
   display: block;

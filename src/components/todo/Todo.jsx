@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Todo = () => {
-  const [Complete, setComplete] = useState(second);
   return (
     <ListWrapper>
       <TodoContainer>
